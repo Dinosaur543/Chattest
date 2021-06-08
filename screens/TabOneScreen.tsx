@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { StyleSheet } from 'react-native';
-
+import { StyleSheet,Pressable } from 'react-native';
+import { Auth } from 'aws-amplify';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
@@ -10,6 +10,15 @@ export default function TabOneScreen() {
       <Text style={styles.title}>Tab One</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+    
+
+
+      <Pressable onPress={() => { Auth.signOut() }}>
+        <Text style={{padding: 5, paddingLeft: 20, color:'red'}}>Logout</Text>
+      </Pressable>
+    
+    
+    
     </View>
   );
 }
@@ -30,3 +39,5 @@ const styles = StyleSheet.create({
     width: '80%',
   },
 });
+
+
